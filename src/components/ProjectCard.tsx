@@ -3,6 +3,7 @@ import type { Project, ProjectStatus } from "@/data/projects";
 const statusStyle: Record<ProjectStatus, string> = {
   "운영 중": "border-emerald-600/30 text-emerald-700 dark:text-emerald-400",
   "진행 중": "border-amber-600/30 text-amber-700 dark:text-amber-400",
+  "완료": "border-sky-600/30 text-sky-700 dark:text-sky-400",
   "설계": "border-black/15 dark:border-white/20 text-foreground/50",
 };
 
@@ -11,6 +12,11 @@ export default function ProjectCard({ project }: { project: Project }) {
     <article className="rounded-xl border border-black/10 dark:border-white/10 p-5 transition-colors hover:border-black/25 dark:hover:border-white/25">
       <div className="flex items-baseline justify-between gap-3">
         <div className="flex flex-wrap items-baseline gap-2">
+          {project.client && (
+            <span className="shrink-0 rounded-md bg-foreground/10 px-2 py-0.5 text-xs font-medium">
+              {project.client}
+            </span>
+          )}
           <h3 className="font-semibold">{project.title}</h3>
           <span
             className={`shrink-0 rounded-full border px-2 py-0.5 text-xs ${statusStyle[project.status]}`}

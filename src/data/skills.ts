@@ -10,8 +10,8 @@ export const mySkills: Record<string, Skill[]> = {
   "Data": [
     { name: "dbt", level: 4 },
     { name: "BigQuery", level: 4 },
-    { name: "Kafka", level: 3 },
-    { name: "Spark", level: 3 },
+    { name: "Kafka", level: 2 },
+    { name: "Spark", level: 2 },
     { name: "Pandas", level: 4 },
     { name: "Airflow", level: 2 },
   ],

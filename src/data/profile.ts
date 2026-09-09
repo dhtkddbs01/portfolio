@@ -23,6 +23,28 @@ export const profile = {
   site: "https://portfolio.sangyoun.com",
 };
 
+/** 재직 이력 */
+export const experience = {
+  company: "MILVUS",
+  team: "DX2본부 2팀",
+  title: "BI Engineer",
+  since: "2024-07-08",
+  sinceLabel: "2024.07",
+};
+
+/** 재직 기간 — "2년 2개월" 형태. 빌드 시점 기준으로 계산된다. */
+export function tenure(from: string = experience.since, to: Date = new Date()): string {
+  const start = new Date(from);
+  let months =
+    (to.getFullYear() - start.getFullYear()) * 12 + (to.getMonth() - start.getMonth());
+  if (to.getDate() < start.getDate()) months -= 1;
+  const y = Math.floor(months / 12);
+  const m = months % 12;
+  if (y && m) return `${y}년 ${m}개월`;
+  if (y) return `${y}년`;
+  return `${m}개월`;
+}
+
 /** 홈 상단 요약 지표 */
 export const careerStats = [
   { label: "구축 프로젝트", value: "8건", note: "데이터 마트 4건 포함" },

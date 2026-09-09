@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { profile, careerStats, whatIDo } from "@/data/profile";
+import { profile, careerStats, whatIDo, experience, tenure } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { mySkills, learning } from "@/data/skills";
 import PrintButton from "@/components/PrintButton";
@@ -20,6 +20,10 @@ export default function ResumePage() {
         <div>
           <h1 className="text-2xl font-bold tracking-tight">{profile.name}</h1>
           <p className="mt-1 font-mono text-sm text-foreground/60">{profile.role}</p>
+          <p className="mt-1 text-sm text-foreground/70">
+            {experience.company} {experience.team} · {experience.title} ·{" "}
+            {experience.sinceLabel} – 현재 ({tenure()})
+          </p>
           <p className="mt-3 text-foreground/80">{profile.tagline}</p>
           <p className="mt-2 font-mono text-xs text-foreground/50">
             {profile.email} · {profile.links.github.replace("https://", "")} ·{" "}

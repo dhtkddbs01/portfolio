@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { profile, careerStats, whatIDo } from "@/data/profile";
+import { profile, careerStats, whatIDo, experience, tenure } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { mySkills } from "@/data/skills";
 import ProjectCard from "@/components/ProjectCard";
@@ -15,6 +15,9 @@ export default function Home() {
         <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
           {profile.name}
         </h1>
+        <p className="mt-3 text-sm text-foreground/60">
+          {experience.company} {experience.team} · {experience.sinceLabel} – 현재 ({tenure()})
+        </p>
         <p className="mt-4 text-lg text-foreground/80">{profile.tagline}</p>
         <div className="mt-6 space-y-3 text-foreground/70 leading-relaxed">
           {profile.bio.map((line, i) => (

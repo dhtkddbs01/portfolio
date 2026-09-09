@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { profile, careerStats, whatIDo, experience, tenure } from "@/data/profile";
+import {
+  profile,
+  careerStats,
+  whatIDo,
+  experience,
+  tenure,
+  credentials,
+} from "@/data/profile";
 import { projects } from "@/data/projects";
 import { mySkills } from "@/data/skills";
 import ProjectCard from "@/components/ProjectCard";
@@ -117,6 +124,13 @@ export default function Home() {
           </Link>
           를 확인하세요.
         </p>
+        <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm text-foreground/55">
+          <span className="text-foreground/40">자격증</span>
+          {credentials.slice(0, 3).map((c) => (
+            <span key={c.name}>{c.name}</span>
+          ))}
+          <span className="text-foreground/40">외 {credentials.length - 3}건</span>
+        </div>
       </section>
 
       {/* Contact */}

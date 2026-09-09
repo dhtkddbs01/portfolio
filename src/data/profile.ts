@@ -76,3 +76,48 @@ export const whatIDo = [
     detail: "Agentforce 에이전트 메타데이터 as code, MCP · Claude Code 기반 워크플로 자동화",
   },
 ];
+
+/** 자격증 — 직무 관련도 순 */
+export const credentials = [
+  { name: "Tableau Consultant", issuer: "Salesforce", date: "2024.09" },
+  { name: "SQL개발자 (SQLD)", issuer: "한국데이터베이스진흥센터", date: "2023.11" },
+  { name: "데이터분석준전문가 (ADsP)", issuer: "한국데이터베이스진흥원", date: "2022.05" },
+  { name: "Salesforce AI Specialist", issuer: "Salesforce", date: "2024.12" },
+  { name: "Slack Administrator", issuer: "Salesforce", date: "2026.06" },
+  { name: "정보처리기능사", issuer: "한국산업인력공단", date: "2019.12" },
+];
+
+/** 학력 */
+export const education = {
+  school: "수원대학교",
+  degree: "4년제 · 주간",
+  period: "2017.03 – 2024.06",
+  major: "경제금융학",
+  minor: "데이터과학 (복수전공)",
+  gpa: "3.67 / 4.5",
+};
+
+/** 교육·활동 — 데이터 직무 관련만 */
+export const training = [
+  {
+    name: "패스트캠퍼스 데이터 분석 바이트 디그리",
+    period: "2024.02 – 2024.04",
+    detail:
+      "마케팅·제조업·HR 데이터셋으로 7주간 매주 분석 프로젝트 수행. 현직 데이터 분석가 피드백을 반영해 개선하는 루프",
+  },
+  {
+    name: "태블로 신병 훈련소",
+    period: "2024.05 – 2024.06",
+    detail: "주어진 데이터로 시각화·대시보드 과제를 수행하는 Tableau 집중 과정",
+  },
+  {
+    name: "패스트캠퍼스 AI 부트캠프",
+    period: "2022.12 – 2023.05",
+    detail: "국비지원 AI·인공지능 과정",
+  },
+  {
+    name: "데이콘 Data Science 실무 역량 강화",
+    period: "2022.06 – 2022.08",
+    detail: "데이터에서 인사이트를 찾고 시각화로 전달하는 과정",
+  },
+];

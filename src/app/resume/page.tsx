@@ -1,5 +1,14 @@
 import type { Metadata } from "next";
-import { profile, careerStats, whatIDo, experience, tenure } from "@/data/profile";
+import {
+  profile,
+  careerStats,
+  whatIDo,
+  experience,
+  tenure,
+  credentials,
+  education,
+  training,
+} from "@/data/profile";
 import { projects } from "@/data/projects";
 import { mySkills, learning } from "@/data/skills";
 import PrintButton from "@/components/PrintButton";
@@ -156,6 +165,51 @@ export default function ResumePage() {
             <dd className="font-mono text-sm text-foreground/45">{learning.join(" · ")}</dd>
           </div>
         </dl>
+      </section>
+
+      {/* 자격증 */}
+      <section className="resume-block">
+        <h2 className="resume-h2">자격증</h2>
+        <ul className="mt-3 space-y-1">
+          {credentials.map((c) => (
+            <li key={c.name} className="flex flex-wrap items-baseline gap-x-2 text-sm">
+              <span className="font-medium">{c.name}</span>
+              <span className="text-foreground/55">{c.issuer}</span>
+              <span className="font-mono text-xs text-foreground/45">{c.date}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* 학력 */}
+      <section className="resume-block">
+        <h2 className="resume-h2">학력</h2>
+        <div className="mt-3 text-sm">
+          <div className="flex flex-wrap items-baseline gap-x-2">
+            <span className="font-medium">{education.school}</span>
+            <span className="text-foreground/55">{education.degree}</span>
+            <span className="font-mono text-xs text-foreground/45">{education.period}</span>
+          </div>
+          <p className="mt-1 text-foreground/65">
+            {education.major} · {education.minor} · 학점 {education.gpa}
+          </p>
+        </div>
+      </section>
+
+      {/* 교육 · 활동 */}
+      <section className="resume-block">
+        <h2 className="resume-h2">교육 · 활동</h2>
+        <ul className="mt-3 space-y-2">
+          {training.map((t) => (
+            <li key={t.name}>
+              <div className="flex flex-wrap items-baseline gap-x-2 text-sm">
+                <span className="font-medium">{t.name}</span>
+                <span className="font-mono text-xs text-foreground/45">{t.period}</span>
+              </div>
+              <p className="mt-0.5 text-sm leading-relaxed text-foreground/60">{t.detail}</p>
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   );

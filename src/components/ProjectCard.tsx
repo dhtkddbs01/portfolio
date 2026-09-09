@@ -29,6 +29,11 @@ export default function ProjectCard({ project }: { project: Project }) {
         </span>
       </div>
       <p className="mt-2 text-sm text-foreground/70">{project.summary}</p>
+      {project.metric && (
+        <p className="mt-3 text-base font-semibold tracking-tight text-foreground/90 print:text-sm">
+          {project.metric}
+        </p>
+      )}
       <ul className="mt-3 space-y-1">
         {project.highlights.map((h) => (
           <li key={h} className="text-sm text-foreground/60 before:content-['·_']">

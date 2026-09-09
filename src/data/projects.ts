@@ -18,6 +18,8 @@ export type Project = {
   /** 실무 프로젝트의 고객사 (개인 프로젝트는 없음) */
   client?: string;
   summary: string;
+  /** 카드에 크게 노출할 대표 성과 (Before → After 형태 권장) */
+  metric?: string;
   description: string[];
   stack: string[];
   highlights: string[];
@@ -37,6 +39,7 @@ export const projects: Project[] = [
     status: "진행 중",
     kind: "실무",
     summary: "SSAS 큐브 기반 레거시 BI를 Tableau 파이프라인으로 전환하는 신규 구축",
+    metric: "DB 3개 → 단일 DB 통합",
     description: [
       "큐브가 담당하던 사전집계를 마트 계층의 집계 테이블로 대체하는 구조를 설계했다. 큐브가 사라지면 상세 데이터를 통째로 추출해 화면에서 집계하게 되는데, 그러면 추출 크기와 배치 시간이 함께 터진다.",
       "ODS/DW/DM 3계층과 단일 DB 네이밍 표준(스키마 체계·접두어·차원 유형 분류)을 수립했다. 기존에는 네이밍룰·설명·과거 데이터 적재가 갖춰져 있지 않았다.",
@@ -60,6 +63,7 @@ export const projects: Project[] = [
     status: "완료",
     kind: "실무",
     summary: "11개 커머스 채널의 이종 스키마를 공통 분석 모델로 정규화",
+    metric: "채널 11개 → 공통 모델 1벌",
     description: [
       "자사몰·오픈마켓·해외마켓·물류 등 11개 채널의 주문·배송·클레임·결제·회원 데이터를 하나의 스키마로 수렴시켰다. 채널마다 필드명도, 통화도, 세금 처리도 달랐다.",
       "채널별로 독립 채번되던 계정 ID 때문에 서로 다른 몰의 고객이 같은 사람으로 병합되는 문제가 있었다. 브랜드 슬롯을 포함한 해시로 식별키를 재설계해 해소했다.",
@@ -83,6 +87,7 @@ export const projects: Project[] = [
     status: "완료",
     kind: "실무",
     summary: "Oracle · Marketing Cloud · Data Cloud 다중 원천을 SQL로 통합",
+    metric: "시스템 3개 → 후원자 기준 통합",
     description: [
       "발송·오픈·클릭 이력(Marketing Cloud), 후원·결연 데이터(Oracle), 행동 데이터(Data Cloud)가 서로 다른 시스템에 흩어져 있었다. 후원자 기준으로 결합하는 SQL 계층을 만들었다.",
       "캠페인 반응 퍼널(실행 → 오픈 → 클릭 → 참여 → 전환) 모델을 설계하고, '전환'이 무엇인지를 데이터 조건으로 정의했다. 예를 들어 캠페인 수신 후 일정 기간 내 후원금 납부 같은 규칙이다.",
@@ -106,6 +111,7 @@ export const projects: Project[] = [
     status: "완료",
     kind: "실무",
     summary: "웹 로그를 3계층으로 나누고 계층별 보관 정책을 분리",
+    metric: "로그 전량 → 소비 계층 3개월",
     description: [
       "웹에서 발생한 액세스 로그를 원천 DB에 적재하고, 집계 형태로 마트에 넣은 뒤, 소비 계층에는 최근 3개월치만 두었다. 계층마다 목적이 다르니 보관 정책도 달라야 했다.",
       "행동 로그를 상세 그대로 추출로 밀면 추출 크기와 갱신 시간이 함께 커진다. 소비 계층에서 잘라내는 판단이 여기서 나왔고, 이후 다른 프로젝트의 마트 설계 기준으로 정리됐다.",
@@ -130,6 +136,7 @@ export const projects: Project[] = [
     status: "운영 중",
     kind: "개인",
     summary: "손으로 띄우던 서버를 compose 기반으로 옮겨 재현 가능한 상태로 만든 작업",
+    metric: "docker run → 설정 전부 코드로",
     description: [
       "Beelink SER8(8845HS)에 Ubuntu Server를 헤드리스로 설치하고 Docker로 서비스를 격리 운영한다.",
       "`docker run`으로 띄워 실행 옵션이 서버 어디에도 남지 않던 서비스를 compose로 전환했다. 지우기 전에 `docker inspect`로 설정을 추출해 파일로 복원하는 순서를 지켜야 했다.",
@@ -153,6 +160,7 @@ export const projects: Project[] = [
     status: "완료",
     kind: "개인",
     summary: "공개 툴이 파싱조차 못 하는 신규 세이브 포맷을 라이브러리 패치로 뚫은 사례",
+    metric: "파싱 불가 → 개체 92개 복구",
     description: [
       "게임 업데이트로 세이브 압축 방식이 바뀌면서 기존 공개 툴이 전부 실패했다. 파서를 직접 읽어 미지원 타입(Int64) 분기가 빠진 지점을 찾아 패치하고 전체 파싱에 성공했다.",
       "이전 후 개체 92개가 '원정 배정' 상태로 잠기는 문제는, 정상 개체와 이상 개체의 필드를 비교해 원인 필드를 특정하고 제거하는 방식으로 해결했다.",

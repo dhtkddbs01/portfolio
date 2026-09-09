@@ -23,3 +23,85 @@ body {
   background: var(--background);
   color: var(--foreground);
 }
+
+/* /resume 섹션 제목 */
+.resume-h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 45%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--foreground) 12%, transparent);
+  padding-bottom: 0.375rem;
+}
+
+/* ───────────────────────── 인쇄 (이력서 PDF) ─────────────────────────
+   브라우저 인쇄 → 대상 "PDF로 저장" → 배경 그래픽 켜기.
+   다크 테마여도 인쇄는 항상 라이트로 강제한다. 잉크·가독성 문제.        */
+@media print {
+  :root {
+    --background: #ffffff;
+    --foreground: #111111;
+  }
+
+  @page {
+    size: A4;
+    margin: 14mm 12mm;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  /* 화면 전용 요소 제거 */
+  header.sticky,
+  footer,
+  .print\:hidden {
+    display: none !important;
+  }
+
+  /* 본문 여백을 인쇄용으로 좁힘 */
+  main {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .resume {
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  .resume h1 {
+    font-size: 18pt;
+  }
+
+  .resume .resume-h2 {
+    font-size: 8.5pt;
+    color: #555;
+    border-color: #ccc;
+    margin-top: 2mm;
+  }
+
+  /* 항목이 페이지 경계에서 잘리지 않게 */
+  .resume-block,
+  .resume article,
+  .resume section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* 테두리·배경은 인쇄에서 옅게 */
+  .resume .rounded-lg,
+  .resume .rounded-xl {
+    border-color: #ddd !important;
+    background: transparent !important;
+  }
+
+  a {
+    color: inherit !important;
+    text-decoration: none !important;
+  }
+}

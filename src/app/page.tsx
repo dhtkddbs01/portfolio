@@ -29,6 +29,12 @@ export default function Home() {
             프로젝트 보기
           </Link>
           <Link
+            href="/resume"
+            className="rounded-lg border border-black/15 dark:border-white/15 px-4 py-2 font-medium transition-colors hover:border-foreground/40"
+          >
+            이력서 (PDF 저장 가능)
+          </Link>
+          <Link
             href="/skills"
             className="rounded-lg border border-black/15 dark:border-white/15 px-4 py-2 font-medium transition-colors hover:border-foreground/40"
           >
@@ -108,6 +114,37 @@ export default function Home() {
           </Link>
           를 확인하세요.
         </p>
+      </section>
+
+      {/* Contact */}
+      <section className="rounded-xl border border-black/10 dark:border-white/10 p-6 sm:p-8">
+        <h2 className="text-xl font-semibold">데이터가 결정에 닿는 구조를 만듭니다</h2>
+        <p className="mt-3 text-foreground/70 leading-relaxed">
+          원천 설계부터 대시보드까지 한 흐름으로 맡길 사람이 필요하시면 편하게 연락 주세요.
+          채용·협업 모두 환영합니다.
+        </p>
+        <div className="mt-6 flex flex-wrap gap-3 text-sm">
+          <a
+            href={`mailto:${profile.email}`}
+            className="rounded-lg bg-foreground px-4 py-2 font-medium text-background transition-opacity hover:opacity-90"
+          >
+            {profile.email}
+          </a>
+          <a
+            href={profile.links.github}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-lg border border-black/15 dark:border-white/15 px-4 py-2 font-medium transition-colors hover:border-foreground/40"
+          >
+            GitHub
+          </a>
+          <Link
+            href="/resume"
+            className="rounded-lg border border-black/15 dark:border-white/15 px-4 py-2 font-medium transition-colors hover:border-foreground/40"
+          >
+            이력서
+          </Link>
+        </div>
       </section>
     </div>
   );

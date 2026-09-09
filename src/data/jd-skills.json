@@ -1,0 +1,108 @@
+{
+  "updatedAt": "2026-07-23",
+  "source": "crawler",
+  "role": "Data Engineer",
+  "totalPostings": 20,
+  "skills": [
+    {
+      "name": "AWS",
+      "count": 15
+    },
+    {
+      "name": "Python",
+      "count": 14
+    },
+    {
+      "name": "Spark",
+      "count": 8
+    },
+    {
+      "name": "Docker",
+      "count": 8
+    },
+    {
+      "name": "SQL",
+      "count": 7
+    },
+    {
+      "name": "Kafka",
+      "count": 7
+    },
+    {
+      "name": "Kubernetes",
+      "count": 7
+    },
+    {
+      "name": "Airflow",
+      "count": 5
+    },
+    {
+      "name": "GCP",
+      "count": 4
+    },
+    {
+      "name": "BigQuery",
+      "count": 4
+    },
+    {
+      "name": "dbt",
+      "count": 4
+    },
+    {
+      "name": "Flink",
+      "count": 3
+    },
+    {
+      "name": "PostgreSQL",
+      "count": 3
+    },
+    {
+      "name": "Scala",
+      "count": 2
+    },
+    {
+      "name": "Hadoop",
+      "count": 2
+    },
+    {
+      "name": "Redshift",
+      "count": 2
+    },
+    {
+      "name": "Snowflake",
+      "count": 2
+    },
+    {
+      "name": "Pandas",
+      "count": 2
+    },
+    {
+      "name": "Elasticsearch",
+      "count": 2
+    },
+    {
+      "name": "Kinesis",
+      "count": 1
+    },
+    {
+      "name": "Git",
+      "count": 1
+    },
+    {
+      "name": "Terraform",
+      "count": 1
+    },
+    {
+      "name": "MySQL",
+      "count": 1
+    },
+    {
+      "name": "Redis",
+      "count": 1
+    },
+    {
+      "name": "MongoDB",
+      "count": 1
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+services:
+  web:
+    build: .
+    image: portfolio-web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+
+  # JD 크롤러 (주기 실행용 — 필요 시 cron/스케줄러로 트리거)
+  # crawler:
+  #   build: ./crawler
+  #   volumes:
+  #     - ./src/data:/out
+  #   command: python crawl.py --out /out/jd-skills.json

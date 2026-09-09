@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# portfolio.sangyoun.com
 
-## Getting Started
+데이터 엔지니어 포트폴리오 + **JD(채용공고) 스킬 트렌드 대시보드**.
+채용공고를 크롤링해 시장 수요 기술스택을 집계하고, 내 역량과 비교해 보여준다.
 
-First, run the development server:
+## 스택
+- **Next.js 16** (App Router, TypeScript, Tailwind v4) — 사이트
+- **Python** (requests + BeautifulSoup) — JD 크롤러
+- **Docker** — 배포 (홈서버 SER8 + Cloudflare Tunnel)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 구조
+```
+src/
+  app/            홈 · /projects · /skills(대시보드)
+  components/     Nav · Footer · ProjectCard
+  data/           profile.ts · projects.ts · skills.ts · jd-skills.json(크롤러 출력)
+crawler/
+  crawl.py        수집 → 스킬 추출 → 집계 → JSON
+  skills.py       스킬 사전 + 추출 로직
+  sample_jds.py   오프라인 데모용 샘플 JD
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 개발
+```bash
+npm install
+npm run dev        # http://localhost:3000
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## JD 크롤러 실행
+```bash
+cd crawler
+python crawl.py                 # 샘플 데이터(오프라인)로 jd-skills.json 생성
+python crawl.py --source wanted # 실제 사이트(구현/조정 필요)
+```
+결과는 `src/data/jd-skills.json`에 저장되고 `/skills` 대시보드가 읽는다.
+스킬을 추가하려면 `crawler/skills.py`의 `SKILL_PATTERNS`에 넣으면 사이트에도 자동 반영.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Docker
+```bash
+docker compose up -d --build    # http://localhost:3000
+```
 
-## Learn More
+## 배포 (홈서버)
+1. SER8(Ubuntu)에 이 레포 clone (또는 Gitea/GitHub pull)
+2. `docker compose up -d --build`
+3. **Cloudflare Tunnel**로 `portfolio.sangyoun.com` → `localhost:3000` 연결
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 채워야 할 것 (TODO)
+- [ ] `src/data/profile.ts` — GitHub/이메일/이력서 링크
+- [ ] `src/data/projects.ts` — 실제 프로젝트 내용·링크로 교체 (현재 예시 시드)
+- [ ] `src/data/skills.ts` — 보유 스킬·레벨 조정
+- [ ] `crawler/crawl.py` `fetch_wanted()` — 실제 채용사이트 셀렉터 구현

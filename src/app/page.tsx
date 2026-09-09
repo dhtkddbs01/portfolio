@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { profile } from "@/data/profile";
+import { profile, careerStats, whatIDo } from "@/data/profile";
 import { projects } from "@/data/projects";
 import { mySkills } from "@/data/skills";
 import ProjectCard from "@/components/ProjectCard";
@@ -35,6 +35,40 @@ export default function Home() {
             스킬 대시보드
           </Link>
         </div>
+      </section>
+
+      {/* Career stats */}
+      <section>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {careerStats.map((s) => (
+            <div
+              key={s.label}
+              className="rounded-xl border border-black/10 dark:border-white/10 p-5"
+            >
+              <p className="text-sm text-foreground/50">{s.label}</p>
+              <p className="mt-1 text-2xl font-bold tracking-tight">{s.value}</p>
+              <p className="mt-1 text-xs text-foreground/45">{s.note}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* What I do */}
+      <section>
+        <h2 className="text-xl font-semibold">What I Do</h2>
+        <dl className="mt-6 space-y-4">
+          {whatIDo.map((w) => (
+            <div
+              key={w.area}
+              className="grid gap-1 sm:grid-cols-[10rem_1fr] sm:gap-4"
+            >
+              <dt className="font-medium">{w.area}</dt>
+              <dd className="text-sm leading-relaxed text-foreground/65">
+                {w.detail}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       {/* Featured projects */}

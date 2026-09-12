@@ -48,7 +48,7 @@ export function tenure(from: string = experience.since, to: Date = new Date()): 
 /** 홈 상단 요약 지표 */
 export const careerStats = [
   { label: "구축 프로젝트", value: "8건", note: "데이터 마트 4건 포함" },
-  { label: "POC", value: "9건", note: "고객 일정에 맞춘 프로토타이핑" },
+  { label: "POC", value: "7건", note: "고객 일정에 맞춘 프로토타이핑" },
   { label: "교육 · 세미나", value: "30회", note: "19개 고객사" },
 ];
 

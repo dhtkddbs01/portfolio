@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// 이력서 · 경력 기술서 · 포트폴리오 PDF와 같은 서체 — Noto Sans KR 하나로 (2026-11-20 사용자 결정).
+// next/font/google 이 빌드 때 받아 자체 호스팅한다. 400 = 본문, 500 = 강조, 700 = 제목 · 숫자, 300 = 부제.
+const noto = Noto_Sans_KR({
+  weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-noto",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${noto.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <Nav />

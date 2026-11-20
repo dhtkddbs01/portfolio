@@ -8,8 +8,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* 서체는 하나로 통일 — GmarketSans (font-mono 로 쓰던 작은 라벨 · 태그도 같은 서체) */
+  --font-sans: var(--font-gmarket);
+  --font-mono: var(--font-gmarket);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,6 +23,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
+  font-weight: 500; /* 본문 Medium — PDF 문서와 같게(Light는 작은 글씨에서 너무 가늘다) */
 }
 
 /* /resume 섹션 제목 */

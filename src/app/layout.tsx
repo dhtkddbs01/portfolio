@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+// 이력서 · 경력 기술서 · 포트폴리오 PDF와 같은 서체 (GmarketSans — 라이선스 확인 2026-11-18).
+// 원본 TTF를 woff2로만 바꿔 자체 호스팅(글자 수는 그대로). Light = 부제, Medium = 본문, Bold = 제목 · 숫자.
+const gmarket = localFont({
+  src: [
+    { path: "./fonts/GmarketSansLight.woff2", weight: "300", style: "normal" },
+    { path: "./fonts/GmarketSansMedium.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/GmarketSansBold.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-gmarket",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -35,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${gmarket.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <Nav />

@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+import { Noto_Sans_KR } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { profile } from "@/data/profile";
 
-// 이력서 · 경력 기술서 · 포트폴리오 PDF와 같은 서체 (GmarketSans — 라이선스 확인 2026-11-18).
-// 원본 TTF를 woff2로만 바꿔 자체 호스팅(글자 수는 그대로). Light = 부제, Medium = 본문, Bold = 제목 · 숫자.
-const gmarket = localFont({
-  src: [
-    { path: "./fonts/GmarketSansLight.woff2", weight: "300", style: "normal" },
-    { path: "./fonts/GmarketSansMedium.woff2", weight: "500", style: "normal" },
-    { path: "./fonts/GmarketSansBold.woff2", weight: "700", style: "normal" },
-  ],
-  variable: "--font-gmarket",
+// 이력서 · 경력 기술서 · 포트폴리오 PDF와 같은 서체 — Noto Sans KR 하나로 (2026-11-20 사용자 결정).
+// next/font/google 이 빌드 때 받아 자체 호스팅한다. 400 = 본문, 500 = 강조, 700 = 제목 · 숫자, 300 = 부제.
+const noto = Noto_Sans_KR({
+  weight: ["300", "400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-noto",
   display: "swap",
 });
 
@@ -37,7 +34,7 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      className={`${gmarket.variable} h-full antialiased`}
+      className={`${noto.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <Nav />

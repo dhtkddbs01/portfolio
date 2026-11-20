@@ -5,11 +5,11 @@
 
 export const profile = {
   name: "오상윤",
-  role: "BI Engineer · Data Mart",
+  role: "Data Engineer",
   tagline:
     "이종 원천을 하나의 분석 모델로 수렴시키고, 지표 정의를 원천과 대조해 검증합니다.",
   bio: [
-    "MILVUS DX2본부에서 데이터 마트 구축과 Tableau 기반 시각화를 담당합니다. 전자·제조·미디어·금융·유통·비영리 등 여러 산업에서 대시보드를 기획·구축·운영하고, 고객사 교육과 POC 설계를 함께 수행합니다.",
+    "Milvus DX2본부에서 데이터 마트 구축과 Tableau 기반 시각화를 담당합니다. 전자·제조·미디어·금융·유통·비영리 등 여러 산업에서 대시보드를 기획·구축·운영하고, 고객사 교육과 POC 설계를 함께 수행합니다.",
     "화면 위만 보지 않습니다. 대시보드가 올라갈 데이터 마트와 Tableau Server 인프라까지 직접 다루기 때문에, 원천 데이터부터 사용자가 보는 화면까지 한 흐름으로 설계할 수 있습니다.",
     "구축 프로젝트 8건 중 4건이 데이터 마트 구축입니다. ODS/DW/DM 계층 설계, API·수기 시트·광고 매체비를 한 모델로 묶는 dbt 정규화, 웹 로그 파이프라인, 다중 원천 SQL 통합을 맡았습니다.",
   ],
@@ -25,9 +25,9 @@ export const profile = {
 
 /** 재직 이력 */
 export const experience = {
-  company: "MILVUS",
+  company: "Milvus",
   team: "DX2본부 2팀",
-  title: "BI Engineer",
+  title: "Data Engineer",
   since: "2024-07-08",
   sinceLabel: "2024.07",
 };
